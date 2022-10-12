@@ -1,0 +1,56 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "students",
+  "dateExported": "2022-08-09T14:17:55.819Z",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "458ab91f-7b06-4a49-9aa6-90b3c6765116",
+      "colId": "d97a34b9-b881-4a5b-a2b3-01c69b03b56a",
+      "containerId": "",
+      "name": "get all students",
+      "url": "{{dev}}/students",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2022-08-04T11:40:21.714Z",
+      "modified": "2022-08-04T11:40:30.647Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "791ab0e4-14d1-4886-81d6-9bbc0838e2ae",
+      "colId": "d97a34b9-b881-4a5b-a2b3-01c69b03b56a",
+      "containerId": "",
+      "name": "get random student",
+      "url": "{{dev}}/students/random",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2022-08-04T11:40:33.692Z",
+      "modified": "2022-08-04T11:40:40.371Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "6392501f-5fa7-4634-86f5-8bafef3be1a2",
+      "colId": "d97a34b9-b881-4a5b-a2b3-01c69b03b56a",
+      "containerId": "",
+      "name": "save students",
+      "url": "{{dev}}/students/",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2022-08-04T11:40:54.661Z",
+      "modified": "2022-08-04T11:42:08.789Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"students\": [\n    { \"name\": \"Frank Rocha\" },\n    { \"name\": \"Bruna Hamori\" },\n    { \"name\": \"Leandro Simoes\" }\n  ]\n}",
+        "form": []
+      },
+      "tests": []
+    }
+  ]
+}
