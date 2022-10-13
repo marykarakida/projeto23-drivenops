@@ -11,7 +11,7 @@
     "prisma:seed": "prisma db seed",
     "dev": "nodemon src/server.ts",
     "test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test cross-env NODE_OPTIONS=--experimental-vm-modules jest -- -i",
-    "start": "npm run prisma:deploy && node dist/src/server.js"
+    "start": "npm run prisma:deploy && npm run prisma:seed && node dist/src/server.js"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
