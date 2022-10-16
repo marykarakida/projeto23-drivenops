@@ -6,6 +6,7 @@ networks:
 
 volumes: 
   pg_drivenops:
+  react_drivenops:
 
 services:
   db_postgres:
@@ -32,4 +33,25 @@ services:
       - drivenops_backend
     env_file:
       - back-end/.env
+
+  app_react:
+    build: front-end
+    container_name: app_react_drivenops
+    networks:
+      - drivenops_backend
+    volumes:
+      - react_drivenops:/var/www/html
+
+  nginx:
+    build: ./nginx
+    container_name: nginx_drivenops
+    ports:
+      - 80:80
+    networks:
+      - drivenops_backend
+    volumes:
+      - react_drivenops:/var/www/html
+    depends_on:
+      - app_react
+      - node_app
   
