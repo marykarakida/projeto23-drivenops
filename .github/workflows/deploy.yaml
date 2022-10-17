@@ -1,0 +1,35 @@
+name: Deploy on AWS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Create a new bac-kend envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+          envkey_POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+          envkey_POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+          envkey_DATABASE_URL: ${{secrets.POSTGRES_DATABASE_URL}}
+          directory: back-end
+          file_name: .env
+          fail_on_empty: true
+      - name: Create a new front-end envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+          directory: front-end
+          file_name: .env
+          fail_on_empty: true
+      - name: Build
+        run: docker-compose build
+      - name: Run app docker compose
+        run: docker-compose down && docker-compose up -d
